@@ -1,4 +1,3 @@
-# import configparser
 import datetime
 import json
 import logging
@@ -20,12 +19,12 @@ def datestamp():
     return todaystr
 
 
-def get_source_credentials():
-    if 'AWS_ACCESS_KEY_ID' in os.environ:
-        access_key = os.environ['AWS_ACCESS_KEY_ID']
-    if 'AWS_SECRET_ACCESS_KEY' in os.environ:
-        secret_access_key = os.environ['AWS_SECRET_ACCESS_KEY']
-    return (access_key, secret_access_key)
+# def get_source_credentials():
+#     if 'AWS_ACCESS_KEY_ID' in os.environ:
+#         access_key = os.environ['AWS_ACCESS_KEY_ID']
+#     if 'AWS_SECRET_ACCESS_KEY' in os.environ:
+#         secret_access_key = os.environ['AWS_SECRET_ACCESS_KEY']
+#     return (access_key, secret_access_key)
 
 
 def get_assumed_credentials(role):
@@ -46,7 +45,6 @@ def get_assumed_credentials(role):
     else:
         app.logger.info('using cached credentials')
     return creds
-
 
 
 def get_config():
@@ -158,6 +156,7 @@ def document():
 @app.errorhandler(404)
 def error_401(error):
     return '404', 404
+
 
 if __name__ == '__main__':
     app.run

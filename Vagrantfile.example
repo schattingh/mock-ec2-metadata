@@ -1,0 +1,7 @@
+#  example Vagrantfile
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/stretch64"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.provision "shell", path: "nat.sh", run: "always", name: "NAT"
+end

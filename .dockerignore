@@ -1,0 +1,7 @@
+#  ignore everything
+**
+
+#  exclusions
+!entrypoint.sh
+!default.py
+!conf/config.yaml

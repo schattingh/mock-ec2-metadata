@@ -11,26 +11,28 @@ function_dev () {
   -v $DIR:/app \
   -e FLASK_APP=default.py \
   -e FLASK_ENV=development \
-  ${DIRNAME} flask run --host=0.0.0.0
-  #  -p 169.254.169.254:80:5000 \
+  -e ENVIRONMENT=dev \
+  ${DIRNAME}
 }
 
 function_prd () {
   echo 'Running docker container with Flask and Gunicorn'
-  docker run -it --rm \
+  docker run -d --rm \
   -p 5000:5000 \
   -v ~/.aws:/root/.aws \
-  -v $DIR:/app \
   -e FLASK_APP=default.py \
-  ${DIRNAME} gunicorn -b :5000 default:app
+  -e ENVIRONMENT=prd \
+  ${DIRNAME}
 }
 
 function_it () {
   echo 'Running docker container interactively'
   docker run -it --rm \
-  -v ~/.aws:/root/.aws \
-  -v $DIR:/app \
-  ${DIRNAME} /bin/ash
+  --entrypoint=/bin/ash \
+  ${DIRNAME}
+  # -v ~/.aws:/root/.aws \
+  # -v $DIR:/app \
+
 }
 
 case $1 in
