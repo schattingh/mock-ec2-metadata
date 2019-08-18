@@ -11,22 +11,24 @@ The Mock EC2 Metadata service will use an [AWS Credential Profile](https://docs.
 
 The default AWS Credential location (`~/.aws/`) is bind mounted into the Docker container to be available in the running container.
 
+The source IAM profile as configured in `~/.aws/credentials` and the ARN of the IAM role to be assumed are configured in the yaml configuration file.  (Details in the Installation section)
+
 
 ##  Installation
 
 This application can be run in at least three different manners:
 
-1. As a Docker container on your host machine
-2. As a Docker container inside your Vagrant image
-3. As a native python application inside a virtualenv in your Vagrant image
+1. As a Docker container on your host machine.
+2. As a Docker container inside your Vagrant image.
+3. As a native python application inside a virtualenv in your Vagrant image.
 
 The instructions here are for the first method:  It has the least interaction with your Vagrant image of the three methods.
 
 Install it as follows:
 
-1. Clone this repo to your machine
+1. Clone this repo to your Docker host.
 2. The configuration is managed in `conf/config.yaml`.  Copy `conf/sample-config.yaml` to `conf/config.yaml` and edit according to your requirements.  (`conf/config.yaml` is excluded from the git repo)
-3. Make the helper shell scripts executable
+3. Make the helper shell scripts executable.
   ```
   chmod +x *.sh
   ```
@@ -34,6 +36,7 @@ Install it as follows:
   ```
   ./build-docker.sh
   ```
+
 
 ##  Usage
 
